@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz</title>
+	<link rel="stylesheet" type="text/css" href="nondisting.css">
+	<!-- include SweetAlert CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="problems.html">Problems</a></li>
+
+    </ul>
+  </nav>
+</head>
+<body>
+	<h1>Quiz</h1>
+  <h2>Non-Distinguishable Probability</h2>
+	<form id="quiz-form">
+		<p>1. What is the probability of drawing 3 cards from a standard deck of cards and getting 3 hearts?</p>
+		<input type="text" id="q1" name="q1" required><br><br>
+		
+		<p>2. What is the probability of flipping a coin 5 times and getting 3 heads?</p>
+		<input type="text" id="q2" name="q2" required><br><br>
+		
+		<p>3. What is the probability of rolling a pair of dice and getting a sum of 7, given that one of the dice is a 4?</p>
+		<input type="text" id="q3" name="q3" required><br><br>
+		
+		<p>4. What is the probability of selecting 2 marbles from a bag containing 5 red and 3 blue marbles, if the marbles are indistinguishable?</p>
+		<input type="text" id="q4" name="q4" required><br><br>
+		
+		<button type="submit">Submit</button>
+	</form>
+
+	<div id="feedback"></div>
+
+	<script>
+		document.getElementById("quiz-form").addEventListener("submit", function(event) {
+			event.preventDefault();
+			checkAnswers();
+		});
+
+		function checkAnswers() {
+			var q1 = document.getElementById("q1").value;
+			var q2 = document.getElementById("q2").value;
+			var q3 = document.getElementById("q3").value;
+			var q4 = document.getElementById("q4").value;
+			var feedback = document.getElementById("feedback");
+
+			if (q1.toLowerCase() === "0.0026") {
+				if (q2.toLowerCase() === "0.3125") {
+					if (q3.toLowerCase() === "0.1667") {
+						if (q4.toLowerCase() === "0.4762") {
+							feedback.innerHTML = "Congratulations! You got all the answers correct!";
+						} else {
+							feedback.innerHTML = "Sorry, the answer to question 4 is incorrect. Please try again.";
+						}
+					} else {
+						feedback.innerHTML = "Sorry, the answer to question 3 is incorrect. Please try again.";
+					}
+				} else {
+					feedback.innerHTML = "Sorry, the answer to question 2 is incorrect. Please try again.";
+				}
+			} else {
+				feedback.innerHTML = "Sorry, You have incorrect answer. Please try again.";
+			}
+		}
+	</script>
+	<!-- include SweetAlert JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

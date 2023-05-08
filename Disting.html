@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math Investigation Project</title>
+	<link rel="stylesheet" type="text/css" href="math.css">
+	<!-- include SweetAlert CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="problems.html">Problems</a></li>
+
+    </ul>
+  </nav>
+</head>
+<body>
+	<h1>Quiz</h1>
+  <h2>Distinguishable Probability</h2>
+	<form id="quiz-form">
+		<p>1. If a family has two children, and one is a boy, what is the probability that both children are boys?</p>
+		<input type="text" id="q1" name="q1" required><br><br>
+		
+		<p>2. In a certain city, it is known that 20% of the people have blue eyes. If a person is selected at random from the city, what is the probability that the person has blue eyes, given that they are male?</p>
+		<input type="text" id="q2" name="q2" required><br><br>
+		
+		<p>3. A box contains 5 red balls and 3 green balls. If 2 balls are drawn from the box at random, what is the probability that both balls are green, given that the first ball drawn was red?</p>
+		<input type="text" id="q3" name="q3" required><br><br>
+		
+		<p>4. In a factory, 10% of the products are defective. If a batch of 5 products is selected at random, what is the probability that at most 2 of them are defective, given that the first product is defective?</p>
+		<input type="text" id="q4" name="q4" required><br><br>
+		
+		<button type="submit">Submit</button>
+    <br>
+	</form>
+
+	<div id="feedback"></div>
+
+	<script>
+		document.getElementById("quiz-form").addEventListener("submit", function(event) {
+			event.preventDefault();
+			checkAnswers();
+		});
+
+		function checkAnswers() {
+			var q1 = document.getElementById("q1").value;
+			var q2 = document.getElementById("q2").value;
+			var q3 = document.getElementById("q3").value;
+			var q4 = document.getElementById("q4").value;
+			var feedback = document.getElementById("feedback");
+
+			if (q1.toLowerCase() === "1/3") {
+				if (q2.toLowerCase() === "0.2") {
+					if (q3.toLowerCase() === "0.167") {
+						if (q4.toLowerCase() === "0.724") {
+							feedback.innerHTML = "Congratulations! You got all the answers correct!";
+						} else {
+							feedback.innerHTML = "Sorry, the answer to question 4 is incorrect. Please try again.";
+						}
+					} else {
+						feedback.innerHTML = "Sorry, the answer to question 3 is incorrect. Please try again.";
+					}
+				} else {
+					feedback.innerHTML = "Sorry, the answer to question 2 is incorrect. Please try again.";
+				}
+			} else {
+				feedback.innerHTML = "Sorry, You have incorrect answer. Please try again.";
+			}
+		}
+	</script>
+	<!-- include SweetAlert JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+	<script src="math.js"></script>
+</body>
+</html>
